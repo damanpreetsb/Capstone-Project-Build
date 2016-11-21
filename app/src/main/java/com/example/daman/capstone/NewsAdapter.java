@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
     private Context mContext;
-    private FragmentManager fm;
     private ArrayList<String> name, description, newsurl, image;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -63,7 +62,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         try{
             Picasso.with(mContext)
-                    .load(newsurl.get(position))
+                    .load(image.get(position))
                     .fit()
                     .into(holder.imageView);
 

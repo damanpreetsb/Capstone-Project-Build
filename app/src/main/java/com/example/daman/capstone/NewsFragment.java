@@ -52,7 +52,6 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentManager fm = getActivity().getSupportFragmentManager();
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
@@ -60,8 +59,10 @@ public class NewsFragment extends Fragment {
         GridLayoutManager llm = new GridLayoutManager(getActivity(), 2);
         mRecyclerView.setLayoutManager(llm);
 
-        newsAdapter = new NewsAdapter(getActivity(),name, description, newsurl, image);
+        newsAdapter = new NewsAdapter(getActivity(), name, description, newsurl, image);
         mRecyclerView.setAdapter(newsAdapter);
+
+        data();
 
         return rootView;
 
@@ -89,10 +90,11 @@ public class NewsFragment extends Fragment {
                                     String s = obj.getString("urlsToLogos");
                                     JSONObject obj2 = new JSONObject(s);
                                     image.add(obj2.getString("small"));
+                                    System.out.println(image);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }
+                            }newsAdapter.notifyDataSetChanged();
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -101,15 +103,7 @@ public class NewsFragment extends Fragment {
                         Toast.makeText(getContext(), "No internet connections!", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<>();
-                    headers.put("Content-Type", "application/json");
-                    return headers;
-                }
-
-            };
+            });
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(stringRequest);
         } catch (Exception e) {
