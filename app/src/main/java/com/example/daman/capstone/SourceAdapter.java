@@ -1,6 +1,7 @@
 package com.example.daman.capstone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -66,6 +67,14 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
                     .into(holder.imageView);
 
             holder.newstitle.setText(name.get(position));
+            holder.mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext,DetailsActivity.class);
+//                    intent.putExtra("SOURCE_NAME", id.get(holder.getAdapterPosition()));
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
         catch (Exception e){
