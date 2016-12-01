@@ -14,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -26,6 +29,7 @@ public class DetailsFragment extends Fragment {
     FloatingActionButton fab;
     CollapsingToolbarLayout collapsingToolbarLayout;
     TextView textView;
+    ImageView imageView;
 
 
     public DetailsFragment() {
@@ -48,6 +52,12 @@ public class DetailsFragment extends Fragment {
 
         textView = (TextView) mRootView.findViewById(R.id.article_body);
         textView.setText(description);
+
+        imageView = (ImageView) mRootView.findViewById(R.id.photo);
+
+        Picasso.with(getContext())
+                .load(image)
+                .into(imageView);
 
         AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.appBarLayout);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
