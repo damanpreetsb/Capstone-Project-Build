@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -23,6 +25,7 @@ public class DetailsFragment extends Fragment {
 
     FloatingActionButton fab;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    TextView textView;
 
 
     public DetailsFragment() {
@@ -35,9 +38,16 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
+        String title = getArguments().getString("TITLE");
+        String image = getArguments().getString("IMAGE");
+        String description = getArguments().getString("DESCRIPTION");
 
         fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
         collapsingToolbarLayout = ((CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout));
+        collapsingToolbarLayout.setTitle(title);
+
+        textView = (TextView) mRootView.findViewById(R.id.article_body);
+        textView.setText(description);
 
         AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.appBarLayout);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

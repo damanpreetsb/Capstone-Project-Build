@@ -2,6 +2,7 @@ package com.example.daman.capstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,18 +61,22 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder,int position) {
         try{
             Picasso.with(mContext)
                     .load(image.get(position))
                     .into(holder.imageView);
 
             holder.newstitle.setText(name.get(position));
+            final Bundle bundle = new Bundle();
+            bundle.putString("TITLE",name.get(position));
+            bundle.putString("DESCRIPTION",description.get(position));
+            bundle.putString("IMAGE", image.get(position));
             holder.mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext,DetailsActivity.class);
-//                    intent.putExtra("SOURCE_NAME", id.get(holder.getAdapterPosition()));
+                    intent.putExtra("BUNDLE", bundle);
                     mContext.startActivity(intent);
                 }
             });

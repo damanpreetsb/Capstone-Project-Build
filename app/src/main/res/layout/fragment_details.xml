@@ -56,16 +56,6 @@
             app:elevation="2dp">
 
             <TextView
-                android:id="@+id/article_byline"
-                style="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#333"
-                android:paddingStart="32dp"
-                android:paddingLeft="32dp"
-                android:textColor="#8fff" />
-
-            <TextView
                 android:id="@+id/article_body"
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
