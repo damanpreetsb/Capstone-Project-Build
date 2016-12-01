@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
     private Context mContext;
-    private ArrayList<String> name, description, newsurl, image;
+    private ArrayList<String> id, name, description, newsurl, image;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
@@ -36,10 +36,11 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
     }
 
 
-    public NewsAdapter(Context c, ArrayList<String> name,
+    public NewsAdapter(Context c, ArrayList<String> id, ArrayList<String> name,
                          ArrayList<String> description, ArrayList<String> newsurl,
                          ArrayList<String> image) {
         mContext = c;
+        this.id = id;
         this.name = name;
         this.description = description;
         this.newsurl = newsurl;
@@ -63,7 +64,6 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
         try{
             Picasso.with(mContext)
                     .load(image.get(position))
-                    .fit()
                     .into(holder.imageView);
 
             holder.newstitle.setText(name.get(position));

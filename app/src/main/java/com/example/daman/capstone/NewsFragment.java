@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ import static android.R.attr.id;
 public class NewsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private NewsAdapter newsAdapter;
+    ArrayList<String> id = new ArrayList<>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> description = new ArrayList<String>();
     ArrayList<String> newsurl = new ArrayList<String>();
@@ -56,10 +58,10 @@ public class NewsFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
         mRecyclerView.setHasFixedSize(true);
-        GridLayoutManager llm = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager llm = new GridLayoutManager(getContext(), 2);
         mRecyclerView.setLayoutManager(llm);
 
-        newsAdapter = new NewsAdapter(getActivity(), name, description, newsurl, image);
+        newsAdapter = new NewsAdapter(getActivity(), id, name, description, newsurl, image);
         mRecyclerView.setAdapter(newsAdapter);
 
         data();
@@ -84,13 +86,13 @@ public class NewsFragment extends Fragment {
                                 JSONArray a1obj = new JSONArray(syncresponse);
                                 for (int j = 0; j < a1obj.length(); j++) {
                                     JSONObject obj = a1obj.getJSONObject(j);
+                                    id.add(obj.getString("id"));
                                     name.add(obj.getString("name"));
                                     description.add(obj.getString("description"));
                                     newsurl.add(obj.getString("url"));
                                     String s = obj.getString("urlsToLogos");
                                     JSONObject obj2 = new JSONObject(s);
-                                    image.add(obj2.getString("small"));
-                                    System.out.println(image);
+                                    image.add(obj2.getString("medium"));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
