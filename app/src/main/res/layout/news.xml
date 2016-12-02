@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:clickable="true"
+    card_view:cardBackgroundColor="@android:color/darker_gray"
     card_view:cardCornerRadius="2dp"
     card_view:cardUseCompatPadding="true">
 
@@ -30,6 +31,7 @@
             android:layout_marginRight="10dp"
             android:ellipsize="end"
             android:gravity="center|start"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 

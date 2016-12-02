@@ -14,6 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -68,27 +74,30 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         try{
-            Picasso.with(mContext)
+            Glide.clear(holder.imageView);
+            Glide.with(holder.imageView.getContext())
                     .load(image.get(position))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .dontAnimate()
+                    .listener(new RequestListener<String, GlideDrawable>() {
+                        @Override
+                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(GlideDrawable resource, String model,
+                                                       Target<GlideDrawable> target,
+                                                       boolean isFromMemoryCache, boolean isFirstResource) {
+                            Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
+                            Palette palette = Palette.generate(bitmap);
+                            int defaultColor = 0xFF333333;
+                            int color = palette.getMutedColor(defaultColor);
+                            holder.mCardView.setCardBackgroundColor(color);
+                            return false;
+                        }
+                    })
                     .into(holder.imageView);
-//                    , new Callback() {
-//                        @Override
-//                        public void onSuccess() {
-//                            Bitmap bitmap = ((BitmapDrawable) holder.imageView.getDrawable()).getBitmap();
-//                            if (bitmap != null) {
-//                                Palette p = Palette.generate(bitmap, 12);
-//                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-////                                holder.imageView.setImageBitmap(((BitmapDrawable) holder.imageView.getDrawable()).getBitmap());
-//                                holder.mCardView.setBackgroundColor(mMutedColor);
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onError() {
-//
-//                        }
-//                    });
 
             holder.newstitle.setText(name.get(position));
             holder.mCardView.setOnClickListener(new View.OnClickListener() {

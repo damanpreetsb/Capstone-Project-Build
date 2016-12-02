@@ -2,7 +2,9 @@ package com.example.daman.capstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -63,8 +71,31 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder,int position) {
         try{
-            Picasso.with(mContext)
+            Glide.clear(holder.imageView);
+            Glide.with(holder.imageView.getContext())
                     .load(image.get(position))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .dontAnimate()
+                    .listener(new RequestListener<String, GlideDrawable>() {
+                        @Override
+                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(GlideDrawable resource, String model,
+                                                       Target<GlideDrawable> target,
+                                                       boolean isFromMemoryCache, boolean isFirstResource) {
+                            Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
+                            Palette palette = Palette.generate(bitmap);
+                            int defaultColor = 0xFF333333;
+                            int color = palette.getDarkMutedColor(defaultColor);
+                            int textcolor = palette.getLightMutedColor(defaultColor);
+                            holder.mCardView.setCardBackgroundColor(color);
+                            holder.newstitle.setTextColor(textcolor);
+                            return false;
+                        }
+                    })
                     .into(holder.imageView);
 
             holder.newstitle.setText(name.get(position));
