@@ -40,7 +40,7 @@ public class DetailsFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
@@ -74,7 +74,7 @@ public class DetailsFragment extends Fragment {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             Window window = getActivity().getWindow();
                             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+                            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
                         }
                         break;
                     case 0:
@@ -93,9 +93,9 @@ public class DetailsFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    startActivity(new Intent(getContext(), SourceActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
-                }
+               Intent intent = new Intent(getActivity(), SourceActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
             }
         });
 

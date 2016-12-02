@@ -58,7 +58,7 @@ public class NewsFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
         mRecyclerView.setHasFixedSize(true);
-        GridLayoutManager llm = new GridLayoutManager(getContext(), 2);
+        StaggeredGridLayoutManager llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
 
         newsAdapter = new NewsAdapter(getActivity(), id, name, description, newsurl, image);
