@@ -1,14 +1,29 @@
 package com.example.daman.capstone;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Window;
+import android.util.TypedValue;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+
 public class DetailsActivity extends AppCompatActivity {
+
+    private ViewPager mPager;
+    private MyPagerAdapter mPagerAdapter;
+    Bundle bundle;
+    private ArrayList<String> name = new ArrayList<>();
+    private ArrayList<String> description = new ArrayList<>();
+    private ArrayList<String> image = new ArrayList<>();
+    private ArrayList<String> author = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +42,44 @@ public class DetailsActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        Bundle bundle = getIntent().getBundleExtra("BUNDLE");
+        bundle = getIntent().getBundleExtra("BUNDLE");
+        name = bundle.getStringArrayList("TITLE");
+        image = bundle.getStringArrayList("IMAGE");
+        description = bundle.getStringArrayList("DESCRIPTION");
+        author = bundle.getStringArrayList("AUTHOR");
 
-        if (savedInstanceState == null) {
-            DetailsFragment moviesFragment = new DetailsFragment();
-            moviesFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.details_container, moviesFragment)
-                    .commit();
+        mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), name, image, description, author);
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(mPagerAdapter);
+        mPager.setPageMargin((int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
+        mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
+
+    }
+
+    private class MyPagerAdapter extends FragmentStatePagerAdapter {
+        private ArrayList<String> name = new ArrayList<>();
+        private ArrayList<String> description = new ArrayList<>();
+        private ArrayList<String> image = new ArrayList<>();
+        private ArrayList<String> author = new ArrayList<>();
+        public MyPagerAdapter(FragmentManager fm, ArrayList<String> name, ArrayList<String> image,
+                              ArrayList<String> description, ArrayList<String> author) {
+            super(fm);
+            this.name = name;
+            this.image = image;
+            this.description = description;
+            this.author = author;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return DetailsFragment.newInstance(name.get(position), image.get(position),
+                    description.get(position), author.get(position));
+        }
+
+        @Override
+        public int getCount() {
+            return (name != null) ? name.size() : 0;
         }
     }
 }

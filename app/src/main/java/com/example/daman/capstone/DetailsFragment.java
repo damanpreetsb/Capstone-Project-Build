@@ -4,6 +4,7 @@ package com.example.daman.capstone;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -30,7 +31,7 @@ public class DetailsFragment extends Fragment {
 
     FloatingActionButton fab;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    TextView textView;
+    TextView textView, authorText;
     ImageView imageView;
 
 
@@ -38,22 +39,47 @@ public class DetailsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static DetailsFragment newInstance(String name, String image, String description, String author) {
+        DetailsFragment fragment = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putString("name", name);
+        args.putString("image", image);
+        args.putString("description", description);
+        args.putString("author", author);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT < 16) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
 
 
 
-        String title = getArguments().getString("TITLE");
-        String image = getArguments().getString("IMAGE");
-        String description = getArguments().getString("DESCRIPTION");
+        String title = getArguments().getString("name");
+        String image = getArguments().getString("image");
+        String description = getArguments().getString("description");
+        String author = getArguments().getString("author");
 
         fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
         collapsingToolbarLayout = ((CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout));
         collapsingToolbarLayout.setTitle(title);
+
+        authorText = (TextView) mRootView.findViewById(R.id.article_author);
+        String s = "By "+author.substring(0,1)+author.substring(1).toLowerCase();
+        authorText.setText(s);
 
         textView = (TextView) mRootView.findViewById(R.id.article_body);
         textView.setText(description);
