@@ -93,7 +93,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
                             Palette palette = Palette.generate(bitmap);
                             int defaultColor = 0xFF333333;
                             int color = palette.getMutedColor(defaultColor);
-                            holder.mCardView.setCardBackgroundColor(color);
+                            holder.newstitle.setBackgroundColor(color);
                             return false;
                         }
                     })
@@ -103,7 +103,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
             holder.mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(mContext,SourceActivity.class);
+                    Intent intent = new Intent(mContext,DetailsActivity.class);
                     intent.putExtra("SOURCE_NAME", id.get(holder.getAdapterPosition()));
                     mContext.startActivity(intent);
                 }

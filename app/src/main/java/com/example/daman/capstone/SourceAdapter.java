@@ -107,9 +107,7 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
             holder.mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(mContext,DetailsActivity.class);
-                    intent.putExtra("BUNDLE", bundle);
-                    mContext.startActivity(intent);
+
                 }
             });
 

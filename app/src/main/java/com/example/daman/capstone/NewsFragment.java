@@ -92,7 +92,7 @@ public class NewsFragment extends Fragment {
                                     newsurl.add(obj.getString("url"));
                                     String s = obj.getString("urlsToLogos");
                                     JSONObject obj2 = new JSONObject(s);
-                                    image.add(obj2.getString("medium"));
+                                    image.add(obj2.getString("large"));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

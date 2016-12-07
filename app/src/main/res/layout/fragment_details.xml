@@ -62,9 +62,10 @@
                 style="?android:attr/textAppearanceMedium"
                 android:background="@color/cardview_dark_background"
                 android:textColor="@android:color/white"
-                android:padding="@dimen/activity_vertical_margin"
+                android:padding="12dp"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:fontFamily="sans-serif-condensed" />
             <TextView
                 android:id="@+id/article_body"

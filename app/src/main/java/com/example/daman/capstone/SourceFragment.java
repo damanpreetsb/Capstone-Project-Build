@@ -60,7 +60,6 @@ public class SourceFragment extends Fragment {
 
         String source = getArguments().getString("SOURCE");
 
-
         data(source);
 
         return rootView;

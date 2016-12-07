@@ -9,10 +9,14 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -39,9 +43,10 @@ public class DetailsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static DetailsFragment newInstance(String name, String image, String description, String author) {
+    public static DetailsFragment newInstance(String source, String name, String image, String description, String author) {
         DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();
+        args.putString("source", source);
         args.putString("name", name);
         args.putString("image", image);
         args.putString("description", description);
@@ -66,8 +71,7 @@ public class DetailsFragment extends Fragment {
 
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
 
-
-
+        final String source = getArguments().getString("source");
         String title = getArguments().getString("name");
         String image = getArguments().getString("image");
         String description = getArguments().getString("description");
@@ -124,8 +128,20 @@ public class DetailsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        toolbar.inflateMenu(R.menu.details);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if(id == R.id.switch_layout) {
+                    Intent intent = new Intent(getActivity(),SourceActivity.class);
+                    intent.putExtra("SOURCE_NAME", source);
+                    getContext().startActivity(intent);
+                }
+                return false;
+            }
+        });
 
         return mRootView;
     }
-
 }
