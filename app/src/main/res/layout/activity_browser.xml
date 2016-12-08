@@ -6,11 +6,13 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:progressBackgroundTint="@color/colorAccent"/>
+        android:layout_marginBottom="-7dp"
+        android:layout_marginTop="-7dp"
+        android:progressTint="@android:color/white"
+        android:progressBackgroundTint="@color/colorPrimary"/>
 
     <WebView
         android:id="@+id/webView1"
