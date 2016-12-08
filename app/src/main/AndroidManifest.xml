@@ -19,8 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".SourceActivity" />
-        <activity android:name=".DetailsActivity"
+        <activity
+            android:name=".DetailsActivity"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".BrowserActivity"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

@@ -2,6 +2,7 @@ package com.example.daman.capstone;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,16 +36,17 @@ import com.squareup.picasso.Picasso;
 public class DetailsFragment extends Fragment {
 
     FloatingActionButton fab;
-    CollapsingToolbarLayout collapsingToolbarLayout;
+    net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout collapsingToolbarLayout;
     TextView textView, authorText;
     ImageView imageView;
+    private boolean bookmark = true;
 
 
     public DetailsFragment() {
         // Required empty public constructor
     }
 
-    public static DetailsFragment newInstance(String source, String name, String image, String description, String author) {
+    public static DetailsFragment newInstance(String source, String name, String image, String description, String author, String newsurl) {
         DetailsFragment fragment = new DetailsFragment();
         Bundle args = new Bundle();
         args.putString("source", source);
@@ -51,6 +54,7 @@ public class DetailsFragment extends Fragment {
         args.putString("image", image);
         args.putString("description", description);
         args.putString("author", author);
+        args.putString("newsurl", newsurl);
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,21 +76,42 @@ public class DetailsFragment extends Fragment {
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
 
         final String source = getArguments().getString("source");
-        String title = getArguments().getString("name");
+        final String title = getArguments().getString("name");
         String image = getArguments().getString("image");
         String description = getArguments().getString("description");
         String author = getArguments().getString("author");
+        final String newsurl = getArguments().getString("newsurl");
 
         fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
-        collapsingToolbarLayout = ((CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/html");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, newsurl);
+                startActivity(Intent.createChooser(sharingIntent,"Share using"));
+            }
+        });
+
+        collapsingToolbarLayout = ((net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout));
         collapsingToolbarLayout.setTitle(title);
 
         authorText = (TextView) mRootView.findViewById(R.id.article_author);
-        String s = "By "+author.substring(0,1)+author.substring(1).toLowerCase();
+        String s = "By "+author.substring(0,1).toUpperCase() + author.substring(1).toLowerCase();
         authorText.setText(s);
 
         textView = (TextView) mRootView.findViewById(R.id.article_body);
         textView.setText(description);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BrowserActivity.class);
+                intent.putExtra("URL", newsurl);
+                intent.putExtra("SOURCE", source);
+                startActivity(intent);
+            }
+        });
 
         imageView = (ImageView) mRootView.findViewById(R.id.photo);
 
@@ -123,7 +148,7 @@ public class DetailsFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(getActivity(), SourceActivity.class);
+               Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
@@ -137,6 +162,16 @@ public class DetailsFragment extends Fragment {
                     Intent intent = new Intent(getActivity(),SourceActivity.class);
                     intent.putExtra("SOURCE_NAME", source);
                     getContext().startActivity(intent);
+                }
+                if(id == R.id.bookmark) {
+                    if(bookmark) {
+                        item.setIcon(R.drawable.ic_bookmark_black_24dp);
+                        bookmark = false;
+                    }
+                    else {
+                        item.setIcon(R.drawable.ic_bookmark_border_black_24dp);
+                        bookmark = true;
+                    }
                 }
                 return false;
             }

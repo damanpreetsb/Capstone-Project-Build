@@ -37,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
     private ArrayList<String> description = new ArrayList<>();
     private ArrayList<String> image = new ArrayList<>();
     private ArrayList<String> author = new ArrayList<>();
+    private ArrayList<String> newsurl = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         data(this, source);
 
-        mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), source, name, image, description, author);
+        mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), source, name, image, description, author, newsurl);
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
@@ -86,7 +87,7 @@ public class DetailsActivity extends AppCompatActivity {
                                     author.add(obj.getString("author"));
                                     name.add(obj.getString("title"));
                                     description.add(obj.getString("description"));
-//                                    newsurl.add(obj.getString("url"));
+                                    newsurl.add(obj.getString("url"));
                                     image.add(obj.getString("urlToImage"));
                                 }
                             } catch (JSONException e) {
@@ -114,21 +115,23 @@ public class DetailsActivity extends AppCompatActivity {
         private ArrayList<String> description = new ArrayList<>();
         private ArrayList<String> image = new ArrayList<>();
         private ArrayList<String> author = new ArrayList<>();
+        private ArrayList<String> newsurl = new ArrayList<>();
 
         public MyPagerAdapter(FragmentManager fm, String source, ArrayList<String> name, ArrayList<String> image,
-                              ArrayList<String> description, ArrayList<String> author) {
+                              ArrayList<String> description, ArrayList<String> author, ArrayList<String> newsurl) {
             super(fm);
             this.source = source;
             this.name = name;
             this.image = image;
             this.description = description;
             this.author = author;
+            this.newsurl = newsurl;
         }
 
         @Override
         public Fragment getItem(int position) {
             return DetailsFragment.newInstance(source, name.get(position), image.get(position),
-                    description.get(position), author.get(position));
+                    description.get(position), author.get(position), newsurl.get(position));
         }
 
         @Override

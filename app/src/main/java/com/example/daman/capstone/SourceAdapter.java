@@ -38,9 +38,9 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
 
         MyViewHolder(View v) {
             super(v);
-            mCardView = (CardView) v.findViewById(R.id.card_view);
-            newstitle = (TextView) v.findViewById(R.id.news_title);
-            imageView = (ImageView) v.findViewById(R.id.grid_image);
+            mCardView = (CardView) v.findViewById(R.id.source_card_view);
+            newstitle = (TextView) v.findViewById(R.id.source_news_title);
+            imageView = (ImageView) v.findViewById(R.id.source_grid_image);
         }
     }
 
@@ -62,7 +62,7 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         MyViewHolder holder;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.news, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.source_news, parent, false);
         holder = new MyViewHolder(v);
         holder.mCardView.setTag(holder);
         return holder;
@@ -92,7 +92,7 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.MyViewHold
                             int color = palette.getDarkMutedColor(defaultColor);
                             int textcolor = palette.getLightMutedColor(defaultColor);
                             holder.mCardView.setCardBackgroundColor(color);
-                            holder.newstitle.setTextColor(textcolor);
+//                            holder.newstitle.setTextColor(textcolor);
                             return false;
                         }
                     })
