@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.switch_layout){
-            Intent intent = new Intent(this, DetailsActivity.class);
+        if(id == R.id.bookmark){
+            Intent intent = new Intent(this, FavActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
