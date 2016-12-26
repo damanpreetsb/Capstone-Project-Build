@@ -1,12 +1,15 @@
 package com.example.daman.capstone;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -16,6 +19,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +29,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +40,7 @@ import com.example.daman.capstone.data.FavContract;
 import com.example.daman.capstone.data.FavDBHelper;
 import com.example.daman.capstone.data.FavProvider;
 import com.example.daman.capstone.data.FavouritesTable;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,11 +52,11 @@ import java.util.List;
  */
 public class DetailsFragment extends Fragment {
 
-    FloatingActionButton fab;
-    net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout collapsingToolbarLayout;
-    TextView textView, authorText;
-    ImageView imageView;
-    private boolean bookmark = true;
+    TextView textView, authorText, authorTitle;
+    ImageView imageView, btnbrowse, btnshare;
+    CardView extraView, cardView;
+    MaterialFavoriteButton btnbookmark;
+    Animation slideUpAnimation, slideDownAnimation;
 
 
     public DetailsFragment() {
@@ -91,34 +99,104 @@ public class DetailsFragment extends Fragment {
         final String author = getArguments().getString("author");
         final String newsurl = getArguments().getString("newsurl");
 
-        fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/html");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, newsurl);
-                startActivity(Intent.createChooser(sharingIntent,"Share using"));
-            }
-        });
+        slideUpAnimation = AnimationUtils.loadAnimation(getContext(),
+                R.anim.slide_up);
 
-        collapsingToolbarLayout = ((net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout));
-        collapsingToolbarLayout.setTitle(title);
+        slideDownAnimation = AnimationUtils.loadAnimation(getContext(),
+                R.anim.slide_down);
+
+        cardView = (CardView) mRootView.findViewById(R.id.card_detail);
+
+        extraView = (CardView) mRootView.findViewById(R.id.extra_view);
+
+        authorTitle = (TextView) mRootView.findViewById(R.id.article_title);
+        authorTitle.setText(title);
 
         authorText = (TextView) mRootView.findViewById(R.id.article_author);
-        String s = "By "+author.substring(0,1).toUpperCase() + author.substring(1).toLowerCase();
-        authorText.setText(s);
+        try {
+            String s = "By " + author.substring(0, 1).toUpperCase() + author.substring(1).toLowerCase();
+            authorText.setText(s);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
 
         textView = (TextView) mRootView.findViewById(R.id.article_body);
         textView.setText(description);
-        textView.setOnClickListener(new View.OnClickListener() {
+
+        btnbrowse = (ImageView) mRootView.findViewById(R.id.btn_browse);
+        btnshare = (ImageView) mRootView.findViewById(R.id.btn_share);
+
+        btnbrowse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getActivity(), BrowserActivity.class);
                 intent.putExtra("URL", newsurl);
                 intent.putExtra("SOURCE", source);
                 startActivity(intent);
+
+            }
+        });
+
+        btnshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/html");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, newsurl);
+                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
+            }
+        });
+
+        btnbookmark = (MaterialFavoriteButton) mRootView.findViewById(R.id.btn_bookmark);
+
+        ArrayList<String> check = queryFavourites();
+        System.out.println(check);
+        System.out.println(newsurl);
+        if (check.contains(newsurl)) {
+            btnbookmark.setFavorite(true);
+        } else {
+            btnbookmark.setFavorite(false);
+        }
+
+        btnbookmark.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+            @Override
+            public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                if (favorite) {
+                    FavDBHelper testInstance = new FavDBHelper();
+                    testInstance.title = title;
+                    testInstance.description = description;
+                    testInstance.author = author;
+                    testInstance.image = image;
+                    testInstance.url = newsurl;
+                    testInstance.date = "";
+
+                    try {
+                        getActivity().getContentResolver().insert(FavouritesTable.CONTENT_URI, FavouritesTable.getContentValues(testInstance, true));
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    getActivity().getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsurl});
+                }
+            }
+        });
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (extraView.getVisibility() == View.INVISIBLE) {
+                    extraView.startAnimation(slideUpAnimation);
+                    extraView.setVisibility(View.VISIBLE);
+
+                } else {
+                    extraView.startAnimation(slideDownAnimation);
+                    extraView.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
@@ -127,89 +205,6 @@ public class DetailsFragment extends Fragment {
         Picasso.with(getContext())
                 .load(image)
                 .into(imageView);
-
-        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.appBarLayout);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                switch (verticalOffset){
-                    case 1:
-                        fab.setVisibility(View.GONE);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            Window window = getActivity().getWindow();
-                            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-                        }
-                        break;
-                    case 0:
-                        fab.setVisibility(View.VISIBLE);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            Window window = getActivity().getWindow();
-                            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                            window.setStatusBarColor(getResources().getColor(android.R.color.transparent));
-                        }
-                        break;
-                }
-            }
-        });
-
-        ArrayList<String> check = queryFavourites();
-        System.out.println(check);
-        System.out.println(newsurl);
-        if(check.contains(newsurl)) {
-            Toast.makeText(getContext(), "Yes", Toast.LENGTH_SHORT).show();
-            bookmark = true;
-        }
-        else {
-            Toast.makeText(getContext(), "No", Toast.LENGTH_SHORT).show();
-            bookmark = false;
-        }
-        Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
-            }
-        });
-        toolbar.inflateMenu(R.menu.details);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if(id == R.id.switch_layout) {
-                    Intent intent = new Intent(getActivity(),SourceActivity.class);
-                    intent.putExtra("SOURCE_NAME", source);
-                    getContext().startActivity(intent);
-                }
-                if(id == R.id.bookmark) {
-                    if(bookmark) {
-                        item.setIcon(R.drawable.ic_bookmark_black_24dp);
-                        FavDBHelper testInstance = new FavDBHelper();
-                        testInstance.title = title;
-                        testInstance.description = description;
-                        testInstance.author = author;
-                        testInstance.image = image;
-                        testInstance.url = newsurl;
-                        testInstance.date = "";
-
-                        try {
-                            getActivity().getContentResolver().insert(FavouritesTable.CONTENT_URI, FavouritesTable.getContentValues(testInstance, true));
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                        bookmark = false;
-                    }
-                    else {
-                        item.setIcon(R.drawable.ic_bookmark_border_black_24dp);
-                        getActivity().getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsurl});
-                        bookmark = true;
-                    }
-                }
-                return false;
-            }
-        });
 
         return mRootView;
     }
@@ -223,6 +218,5 @@ public class DetailsFragment extends Fragment {
             idList.add(element.url);
         }
         return idList;
-
     }
 }
