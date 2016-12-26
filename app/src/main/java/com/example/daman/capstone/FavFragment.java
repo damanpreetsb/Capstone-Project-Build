@@ -3,8 +3,6 @@ package com.example.daman.capstone;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,14 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragment extends Fragment {
+public class FavFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private NewsAdapter newsAdapter;
     ArrayList<String> id = new ArrayList<>();
@@ -43,7 +38,7 @@ public class NewsFragment extends Fragment {
     ArrayList<String> image = new ArrayList<String>();
 
 
-    public NewsFragment() {
+    public FavFragment() {
         // Required empty public constructor
     }
 
@@ -52,9 +47,9 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_news, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_fav, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.favrecyclerview);
         mRecyclerView.setHasFixedSize(true);
         StaggeredGridLayoutManager llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.daman.capstone.sync.NewsSyncAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, moviesFragment)
                     .commit();
         }
+
+        NewsSyncAdapter.initializeSyncAdapter(this);
     }
 
     @Override
