@@ -1,6 +1,7 @@
 package com.example.daman.capstone;
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -36,6 +37,7 @@ import java.util.Map;
 public class NewsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private NewsAdapter newsAdapter;
+    private StaggeredGridLayoutManager llm;
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> description = new ArrayList<String>();
@@ -56,7 +58,12 @@ public class NewsFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
         mRecyclerView.setHasFixedSize(true);
-        StaggeredGridLayoutManager llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        }
+        else{
+            llm = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
+        }
         mRecyclerView.setLayoutManager(llm);
 
         newsAdapter = new NewsAdapter(getActivity(), id, name, description, newsurl, image);

@@ -1,6 +1,7 @@
 package com.example.daman.capstone;
 
 
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,7 @@ import java.util.List;
 public class FavFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private FavAdapter newsAdapter;
+    StaggeredGridLayoutManager llm;
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> description = new ArrayList<String>();
@@ -55,7 +57,12 @@ public class FavFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.favrecyclerview);
         mRecyclerView.setHasFixedSize(true);
-        StaggeredGridLayoutManager llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        if(getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        }
+        else{
+            llm = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
+        }
         mRecyclerView.setLayoutManager(llm);
 
         newsAdapter = new FavAdapter(getActivity(), id, name, description, newsurl, image);
