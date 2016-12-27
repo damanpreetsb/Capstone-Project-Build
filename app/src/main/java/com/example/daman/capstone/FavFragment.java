@@ -1,6 +1,7 @@
 package com.example.daman.capstone;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +18,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.daman.capstone.data.FavDBHelper;
+import com.example.daman.capstone.data.FavouritesTable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,7 +34,7 @@ import java.util.ArrayList;
  */
 public class FavFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private NewsAdapter newsAdapter;
+    private FavAdapter newsAdapter;
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> description = new ArrayList<String>();
@@ -54,7 +58,7 @@ public class FavFragment extends Fragment {
         StaggeredGridLayoutManager llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
 
-        newsAdapter = new NewsAdapter(getActivity(), id, name, description, newsurl, image);
+        newsAdapter = new FavAdapter(getActivity(), id, name, description, newsurl, image);
         mRecyclerView.setAdapter(newsAdapter);
 
         data();
@@ -65,44 +69,17 @@ public class FavFragment extends Fragment {
 
 
     public void data() {
-        try {
-            final String BASE_URL = "https://newsapi.org/v1/sources?language=en";
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                    BASE_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject object = new JSONObject(response);
-                                String syncresponse = object.getString("sources");
-                                JSONArray a1obj = new JSONArray(syncresponse);
-                                for (int j = 0; j < a1obj.length(); j++) {
-                                    JSONObject obj = a1obj.getJSONObject(j);
-                                    id.add(obj.getString("id"));
-                                    name.add(obj.getString("name"));
-                                    description.add(obj.getString("description"));
-                                    newsurl.add(obj.getString("url"));
-                                    String s = obj.getString("urlsToLogos");
-                                    JSONObject obj2 = new JSONObject(s);
-                                    image.add(obj2.getString("large"));
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }newsAdapter.notifyDataSetChanged();
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (error instanceof NoConnectionError) {
-                        Toast.makeText(getContext(), "No internet connections!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-            requestQueue.add(stringRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Cursor cursor = getContext().getContentResolver().query(FavouritesTable.CONTENT_URI, null, null, null, null);
+        List<FavDBHelper> testRows = FavouritesTable.getRows(cursor, true);
+        for (FavDBHelper element : testRows){
+
+            name.add(element.title);
+            description.add(element.description);
+            id.add(element.author);
+            newsurl.add(element.url);
+            image.add(element.image);
+
         }
     }
 }

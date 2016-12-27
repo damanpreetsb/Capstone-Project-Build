@@ -3,6 +3,9 @@ package com.example.daman.capstone;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -40,6 +43,7 @@ import com.example.daman.capstone.data.FavContract;
 import com.example.daman.capstone.data.FavDBHelper;
 import com.example.daman.capstone.data.FavProvider;
 import com.example.daman.capstone.data.FavouritesTable;
+import com.example.daman.capstone.widget.NewsWidget;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
 
@@ -91,6 +95,8 @@ public class DetailsFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
+
+        sendUpdateIntent(getContext());
 
         final String source = getArguments().getString("source");
         final String title = getArguments().getString("name");
@@ -176,11 +182,13 @@ public class DetailsFragment extends Fragment {
 
                     try {
                         getActivity().getContentResolver().insert(FavouritesTable.CONTENT_URI, FavouritesTable.getContentValues(testInstance, true));
+                        sendUpdateIntent(getContext());
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
                 } else {
                     getActivity().getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsurl});
+                    sendUpdateIntent(getContext());
                 }
             }
         });
@@ -207,6 +215,13 @@ public class DetailsFragment extends Fragment {
                 .into(imageView);
 
         return mRootView;
+    }
+
+    public static void sendUpdateIntent(Context context)
+    {
+        Intent i = new Intent(context, NewsWidget.class);
+        i.setAction(NewsWidget.DATABASE_CHANGED);
+        context.sendBroadcast(i);
     }
 
     private ArrayList<String> queryFavourites() {

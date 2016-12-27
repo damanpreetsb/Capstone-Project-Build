@@ -23,10 +23,5 @@ public class FavActivity extends AppCompatActivity {
                     .replace(R.id.fav_container, favFragment)
                     .commit();
         }
-
-//        Cursor cursor = getContentResolver().query(FavouritesTable.CONTENT_URI, null, null, null, null);
-//        List<FavDBHelper> testRows = FavouritesTable.getRows(cursor, true);
-//        for (FavDBHelper element : testRows)
-//            Toast.makeText(this, element.url, Toast.LENGTH_SHORT).show();
     }
 }

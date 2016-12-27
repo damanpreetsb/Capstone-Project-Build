@@ -19,6 +19,7 @@ public class BrowserActivity extends AppCompatActivity {
     private String newsurl = "";
     private ActionBar actionBar;
     private ProgressBar progressBar;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,11 @@ public class BrowserActivity extends AppCompatActivity {
 
         newsurl = getIntent().getStringExtra("URL");
         String source = getIntent().getStringExtra("SOURCE");
-
-        String s = source.substring(0,1).toUpperCase() + source.substring(1).toLowerCase();
+        try {
+           s = source.substring(0, 1).toUpperCase() + source.substring(1).toLowerCase();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
