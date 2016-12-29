@@ -2,6 +2,8 @@ package com.example.daman.capstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.graphics.Bitmap;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -18,8 +20,13 @@ import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.daman.capstone.data.FavContract;
+import com.example.daman.capstone.data.FavDBHelper;
+import com.example.daman.capstone.data.FavouritesTable;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by daman on 26/12/16.
@@ -29,6 +36,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     private Context mContext;
     private ArrayList<String> id, name, description, newsurl, image;
     private int mMutedColor = 0xFF333333;
+    private MaterialFavoriteButton btnbookmark;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
@@ -40,13 +48,14 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
             mCardView = (CardView) v.findViewById(R.id.fav_card_view);
             newstitle = (TextView) v.findViewById(R.id.fav_news_title);
             imageView = (ImageView) v.findViewById(R.id.fav_grid_image);
+            btnbookmark = (MaterialFavoriteButton) v.findViewById(R.id.fav_bookmark);
         }
     }
 
 
     public FavAdapter(Context c, ArrayList<String> id, ArrayList<String> name,
-                       ArrayList<String> description, ArrayList<String> newsurl,
-                       ArrayList<String> image) {
+                      ArrayList<String> description, ArrayList<String> newsurl,
+                      ArrayList<String> image) {
         mContext = c;
         this.id = id;
         this.name = name;
@@ -69,7 +78,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(final FavAdapter.MyViewHolder holder, final int position) {
-        try{
+        try {
             Glide.clear(holder.imageView);
             Glide.with(holder.imageView.getContext())
                     .load(image.get(position))
@@ -106,10 +115,35 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
                 }
             });
 
-        }
-        catch (Exception e){
+            ArrayList<String> check = queryFavourites();
+            if (check.contains(newsurl.get(position))) {
+                btnbookmark.setFavorite(true);
+            } else {
+                btnbookmark.setFavorite(false);
+            }
+
+            btnbookmark.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                @Override
+                public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                    mContext.getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsurl.get(position)});
+                }
+            });
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private ArrayList<String> queryFavourites() {
+
+        Cursor c = mContext.getContentResolver().query(FavouritesTable.CONTENT_URI, null, null, null, null);
+        List<FavDBHelper> list = FavouritesTable.getRows(c, true);
+        ArrayList<String> idList = new ArrayList<>();
+        for (FavDBHelper element : list) {
+            idList.add(element.url);
+        }
+        return idList;
     }
 
     @Override

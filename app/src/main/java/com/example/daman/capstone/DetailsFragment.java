@@ -1,47 +1,25 @@
 package com.example.daman.capstone;
 
-
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.daman.capstone.data.FavContract;
 import com.example.daman.capstone.data.FavDBHelper;
-import com.example.daman.capstone.data.FavProvider;
 import com.example.daman.capstone.data.FavouritesTable;
 import com.example.daman.capstone.widget.NewsWidget;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
@@ -89,10 +67,10 @@ public class DetailsFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View mRootView = inflater.inflate(R.layout.fragment_details, container, false);
 
@@ -160,8 +138,6 @@ public class DetailsFragment extends Fragment {
         btnbookmark = (MaterialFavoriteButton) mRootView.findViewById(R.id.btn_bookmark);
 
         ArrayList<String> check = queryFavourites();
-        System.out.println(check);
-        System.out.println(newsurl);
         if (check.contains(newsurl)) {
             btnbookmark.setFavorite(true);
         } else {

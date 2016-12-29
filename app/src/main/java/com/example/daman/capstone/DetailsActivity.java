@@ -1,7 +1,7 @@
 package com.example.daman.capstone;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,8 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -23,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.daman.capstone.utils.VerticalViewPager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +57,10 @@ public class DetailsActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        String source = getIntent().getStringExtra("SOURCE_NAME");
+        Bundle bundle = getIntent().getBundleExtra("BUNDLE");
+
+        String source = bundle.getString("SOURCE_NAME");
+        System.out.println(source);
 
         data(this, source);
 
@@ -116,7 +118,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
-    private class MyPagerAdapter extends FragmentStatePagerAdapter {
+    public class MyPagerAdapter extends FragmentStatePagerAdapter {
         String source;
         private ArrayList<String> name = new ArrayList<>();
         private ArrayList<String> description = new ArrayList<>();

@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            NewsFragment moviesFragment = new NewsFragment();
+            NewsFragment newsFragment = new NewsFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, moviesFragment)
+                    .replace(R.id.container, newsFragment)
                     .commit();
         }
 

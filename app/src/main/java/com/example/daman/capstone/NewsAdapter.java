@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -29,10 +30,12 @@ import java.util.ArrayList;
  * Created by daman on 14/11/16.
  */
 
-public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
     private Context mContext;
     private ArrayList<String> id, name, description, newsurl, image;
     private int mMutedColor = 0xFF333333;
+    private boolean mTwoPane;
+    private FragmentManager fm;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
@@ -49,15 +52,16 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
 
 
     public NewsAdapter(Context c, ArrayList<String> id, ArrayList<String> name,
-                         ArrayList<String> description, ArrayList<String> newsurl,
-                         ArrayList<String> image) {
+                       ArrayList<String> description, ArrayList<String> newsurl,
+                       ArrayList<String> image, boolean mTwoPane, FragmentManager fm) {
         mContext = c;
         this.id = id;
         this.name = name;
         this.description = description;
         this.newsurl = newsurl;
         this.image = image;
-
+        this.mTwoPane = mTwoPane;
+        this.fm = fm;
     }
 
 
@@ -73,7 +77,7 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        try{
+        try {
             Glide.clear(holder.imageView);
             Glide.with(holder.imageView.getContext())
                     .load(image.get(position))
@@ -103,17 +107,18 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
             holder.mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(mContext,DetailsActivity.class);
-                    intent.putExtra("SOURCE_NAME", id.get(holder.getAdapterPosition()));
+                    Bundle extras = new Bundle();
+                    extras.putString("SOURCE_NAME", id.get(holder.getAdapterPosition()));
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    intent.putExtra("BUNDLE", extras);
                     mContext.startActivity(intent);
                 }
             });
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-     }
+    }
 
     @Override
     public int getItemCount() {

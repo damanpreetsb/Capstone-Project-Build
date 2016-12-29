@@ -5,7 +5,7 @@
     tools:context=".DetailsActivity"
     tools:ignore="MergeRootFrame">
 
-    <com.example.daman.capstone.VerticalViewPager
+    <com.example.daman.capstone.utils.VerticalViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
