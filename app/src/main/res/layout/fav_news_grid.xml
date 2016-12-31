@@ -22,13 +22,14 @@
                 android:id="@+id/fav_grid_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="center" />
+                android:scaleType="center"
+                android:contentDescription="@string/fav_image"/>
 
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#5000"/>
+                android:background="#5000" />
 
             <com.github.ivbaranov.mfb.MaterialFavoriteButton
                 android:id="@+id/fav_bookmark"

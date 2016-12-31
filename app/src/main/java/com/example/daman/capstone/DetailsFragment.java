@@ -101,7 +101,7 @@ public class DetailsFragment extends Fragment {
             String s = "By " + author.substring(0, 1).toUpperCase() + author.substring(1).toLowerCase();
             authorText.setText(s);
         } catch (Exception e) {
-            System.err.println(e);
+            System.out.println(e);
         }
 
         textView = (TextView) mRootView.findViewById(R.id.article_body);

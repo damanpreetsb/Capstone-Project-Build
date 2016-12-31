@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" >
 
     <ProgressBar
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="-7dp"
         android:layout_marginTop="-7dp"
+        tools:elevation="@dimen/default_elevation"
         android:progressTint="@android:color/white"
         android:progressBackgroundTint="@color/colorPrimary"/>
 

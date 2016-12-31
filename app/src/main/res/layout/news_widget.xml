@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:background="#8000"
         android:gravity="center"
-        android:text="Empty Message"
+        android:text="@string/no_data"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold" />

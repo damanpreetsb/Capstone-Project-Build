@@ -2,6 +2,7 @@ package com.example.daman.capstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NoConnectionError;
@@ -34,6 +36,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private VerticalViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
+    private TextView mEmptyView;
     private ArrayList<String> name = new ArrayList<>();
     private ArrayList<String> description = new ArrayList<>();
     private ArrayList<String> image = new ArrayList<>();
@@ -49,18 +52,15 @@ public class DetailsActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_details);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
-//        setSupportActionBar(toolbar);
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        mEmptyView = (TextView) findViewById(R.id.details_empty_view);
 
         Bundle bundle = getIntent().getBundleExtra("BUNDLE");
 
         String source = bundle.getString("SOURCE_NAME");
-        System.out.println(source);
 
         data(this, source);
 
@@ -80,10 +80,14 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void data(final Context context, String source) {
         try {
-            final String BASE_URL = "https://newsapi.org/v1/articles?source="+source+"&apiKey=ed3d44b41e2b475bbdc76c8e4935a5c1";
+
+            final Uri baseUri = Uri.parse(getResources().getString(R.string.details_base_url)).buildUpon()
+                    .appendQueryParameter(getResources().getString(R.string.source), source)
+                    .appendQueryParameter(getResources().getString(R.string.api_text), getResources().getString(R.string.api_key))
+                    .build();
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                    BASE_URL,
+                    baseUri.toString(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -106,8 +110,10 @@ public class DetailsActivity extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    mPager.setVisibility(View.GONE);
+                    mEmptyView.setVisibility(View.VISIBLE);
                     if (error instanceof NoConnectionError) {
-                        Toast.makeText(context, "No internet connections!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,getResources().getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

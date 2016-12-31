@@ -35,7 +35,6 @@ import java.util.List;
 public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     private Context mContext;
     private ArrayList<String> id, name, description, newsurl, image;
-    private int mMutedColor = 0xFF333333;
     private MaterialFavoriteButton btnbookmark;
 
     class MyViewHolder extends RecyclerView.ViewHolder {

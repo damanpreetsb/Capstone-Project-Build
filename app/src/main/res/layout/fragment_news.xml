@@ -12,7 +12,14 @@
         android:scrollbars="vertical"
         android:background="@color/colorPrimaryDark"
         app:layoutManager="StaggeredGridLayoutManager"
-        tools:context=".MainActivity"
-        />
+        tools:context=".MainActivity" />
+
+    <TextView
+        android:id="@+id/main_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/no_data" />
 
 </FrameLayout>

@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/detail_image"
                 android:background="@color/colorPrimary"
                 android:scaleType="centerCrop"
                 tools:ignore="ContentDescription" />
@@ -33,7 +33,7 @@
                 android:background="@color/cardview_dark_background"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
-                android:padding="12dp"
+                android:padding="@dimen/details_text_padding"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
         android:layout_gravity="bottom"
         android:visibility="invisible"
         app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardElevation="4dp">
+        app:cardElevation="@dimen/default_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +87,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_public_black_24dp" />
+                android:src="@drawable/ic_public_black_24dp"
+                android:contentDescription="@string/btn_browser"/>
 
             <com.github.ivbaranov.mfb.MaterialFavoriteButton
                 android:id="@+id/btn_bookmark"
@@ -112,7 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_share_black_24dp" />
+                android:src="@drawable/ic_share_black_24dp"
+                android:contentDescription="@string/btn_share"/>
 
         </LinearLayout>
 

@@ -12,7 +12,6 @@
         android:scrollbars="vertical"
         android:background="@color/colorPrimaryDark"
         app:layoutManager="StaggeredGridLayoutManager"
-        tools:context=".MainActivity"
-        />
+        tools:context=".MainActivity" />
 
 </FrameLayout>

@@ -11,6 +11,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +37,7 @@ import java.util.Map;
  */
 public class NewsFragment extends Fragment {
     private RecyclerView mRecyclerView;
+    private TextView mEmptyView;
     private NewsAdapter newsAdapter;
     private StaggeredGridLayoutManager llm;
     public boolean mTwoPane;
@@ -63,15 +65,16 @@ public class NewsFragment extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.newsrecyclerview);
         mRecyclerView.setHasFixedSize(true);
 
-        if(!mTwoPane) {
+        mEmptyView = (TextView) rootView.findViewById(R.id.main_empty_view);
+
+        if (!mTwoPane) {
 
             if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 llm = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             } else {
                 llm = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
             }
-        }
-        else{
+        } else {
             if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 llm = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
             } else {
@@ -92,7 +95,7 @@ public class NewsFragment extends Fragment {
 
     public void data() {
         try {
-            final String BASE_URL = "https://newsapi.org/v1/sources?language=en";
+            final String BASE_URL = getResources().getString(R.string.base_url);
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
                     BASE_URL,
@@ -115,13 +118,16 @@ public class NewsFragment extends Fragment {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                            }newsAdapter.notifyDataSetChanged();
+                            }
+                            newsAdapter.notifyDataSetChanged();
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    mRecyclerView.setVisibility(View.GONE);
+                    mEmptyView.setVisibility(View.VISIBLE);
                     if (error instanceof NoConnectionError) {
-                        Toast.makeText(getContext(), "No internet connections!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

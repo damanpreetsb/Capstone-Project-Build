@@ -7,7 +7,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="#9000"
-        android:gravity="center" />
+        android:gravity="center"
+        android:contentDescription="@string/details_image"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
         android:gravity="center"
         android:textColor="#fff"
         android:padding="@dimen/activity_horizontal_margin"
-        android:text="@string/hello_blank_fragment"
+        android:text="@string/no_data"
         android:id="@+id/widget_text"/>
 
 </FrameLayout>

@@ -18,7 +18,8 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:id="@+id/grid_image"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"
+            android:contentDescription="@string/details_image"/>
 
         <TextView
             android:id="@+id/news_title"

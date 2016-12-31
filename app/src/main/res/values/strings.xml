@@ -4,8 +4,21 @@
     <string name="content_authority">com.example.daman.capstone</string>
     <string name="sync_account_type">com.example.daman.capstone</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="base_url">https://newsapi.org/v1/sources?language=en</string>
+    <string name="no_internet">No internet connections!</string>
+    <string name="details_base_url">https://newsapi.org/v1/articles?</string>
+    <string name="source">source</string>
+    <string name="api_text">api_key</string>
+    <string name="api_key">ed3d44b41e2b475bbdc76c8e4935a5c1</string>
+
+    <string name="fav_image">Favourite Image</string>
+    <string name="details_image">News Image</string>
+
+    <string name="btn_browser">Browser button</string>
+    <string name="btn_share">Share button</string>
+
+    <string name="no_data">No data available!</string>
 </resources>

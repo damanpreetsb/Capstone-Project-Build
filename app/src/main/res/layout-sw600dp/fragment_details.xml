@@ -107,7 +107,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_public_black_24dp" />
+                android:src="@drawable/ic_public_black_24dp"
+                android:contentDescription="@string/btn_browser"/>
 
             <com.github.ivbaranov.mfb.MaterialFavoriteButton
                 android:id="@+id/btn_bookmark"
@@ -132,7 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_share_black_24dp" />
+                android:src="@drawable/ic_share_black_24dp"
+                android:contentDescription="@string/btn_share"/>
 
         </LinearLayout>
 
