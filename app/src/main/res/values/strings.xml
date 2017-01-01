@@ -11,8 +11,8 @@
     <string name="no_internet">No internet connections!</string>
     <string name="details_base_url">https://newsapi.org/v1/articles?</string>
     <string name="source">source</string>
-    <string name="api_text">api_key</string>
-    <string name="api_key">ed3d44b41e2b475bbdc76c8e4935a5c1</string>
+    <string name="api_text">apiKey</string>
+    <string name="api_key"></string>
 
     <string name="fav_image">Favourite Image</string>
     <string name="details_image">News Image</string>
@@ -21,4 +21,9 @@
     <string name="btn_share">Share button</string>
 
     <string name="no_data">No data available!</string>
+
+    <string name="bookmark">Bookmark</string>
+    <string name="delete_all">Delete all</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

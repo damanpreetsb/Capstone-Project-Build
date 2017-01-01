@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "828310143716",
+    "firebase_url": "https://capstone-a79d0.firebaseio.com",
+    "project_id": "capstone-a79d0",
+    "storage_bucket": "capstone-a79d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828310143716:android:fa4f00e9861b82aa",
+        "android_client_info": {
+          "package_name": "com.example.daman.capstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828310143716-fvm2qp2h9bs3ag9mclh4ppns74ohfn4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsnzGuNgFMkzYV4myDuOvFmpuKqXY9n9s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

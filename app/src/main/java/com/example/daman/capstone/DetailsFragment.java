@@ -23,6 +23,10 @@ import com.example.daman.capstone.data.FavDBHelper;
 import com.example.daman.capstone.data.FavouritesTable;
 import com.example.daman.capstone.widget.NewsWidget;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,6 +43,8 @@ public class DetailsFragment extends Fragment {
     CardView extraView, cardView;
     MaterialFavoriteButton btnbookmark;
     Animation slideUpAnimation, slideDownAnimation;
+    private AdView mAdView;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     public DetailsFragment() {
@@ -65,6 +71,7 @@ public class DetailsFragment extends Fragment {
             getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
     }
 
 
@@ -82,6 +89,20 @@ public class DetailsFragment extends Fragment {
         final String description = getArguments().getString("description");
         final String author = getArguments().getString("author");
         final String newsurl = getArguments().getString("newsurl");
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, source);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, newsurl);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        mAdView = (AdView) mRootView.findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        // Start loading the ad in the background.
+        mAdView.loadAd(adRequest);
 
         slideUpAnimation = AnimationUtils.loadAnimation(getContext(),
                 R.anim.slide_up);
@@ -209,5 +230,31 @@ public class DetailsFragment extends Fragment {
             idList.add(element.url);
         }
         return idList;
+    }
+
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }
