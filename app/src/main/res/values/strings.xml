@@ -12,7 +12,7 @@
     <string name="details_base_url">https://newsapi.org/v1/articles?</string>
     <string name="source">source</string>
     <string name="api_text">apiKey</string>
-    <string name="api_key"></string>
+    <string name="api_key">ed3d44b41e2b475bbdc76c8e4935a5c1</string>
 
     <string name="fav_image">Favourite Image</string>
     <string name="details_image">News Image</string>

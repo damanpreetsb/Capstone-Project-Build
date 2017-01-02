@@ -72,6 +72,7 @@ public class DetailsFragment extends Fragment {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
 

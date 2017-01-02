@@ -36,6 +36,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     private Context mContext;
     private ArrayList<String> id, name, description, newsurl, image;
     private MaterialFavoriteButton btnbookmark;
+    Cursor dataCursor;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
@@ -54,14 +55,27 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     public FavAdapter(Context c, ArrayList<String> id, ArrayList<String> name,
                       ArrayList<String> description, ArrayList<String> newsurl,
-                      ArrayList<String> image) {
+                      ArrayList<String> image, Cursor cursor) {
         mContext = c;
         this.id = id;
         this.name = name;
         this.description = description;
         this.newsurl = newsurl;
         this.image = image;
+        this.dataCursor = cursor;
 
+    }
+
+    public Cursor swapCursor(Cursor cursor) {
+        if (dataCursor == cursor) {
+            return null;
+        }
+        Cursor oldCursor = dataCursor;
+        this.dataCursor = cursor;
+        if (cursor != null) {
+            this.notifyDataSetChanged();
+        }
+        return oldCursor;
     }
 
 
@@ -78,9 +92,10 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(final FavAdapter.MyViewHolder holder, final int position) {
         try {
+            dataCursor.moveToPosition(position);
             Glide.clear(holder.imageView);
             Glide.with(holder.imageView.getContext())
-                    .load(image.get(position))
+                    .load(dataCursor.getString(dataCursor.getColumnIndex(FavouritesTable.FIELD_URLTOIMAGE)))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .dontAnimate()
                     .listener(new RequestListener<String, GlideDrawable>() {
@@ -103,7 +118,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
                     })
                     .into(holder.imageView);
 
-            holder.newstitle.setText(name.get(position));
+            holder.newstitle.setText(dataCursor.getString(dataCursor.getColumnIndex(FavouritesTable.FIELD_TITLE)));
             holder.mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -114,8 +129,10 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
                 }
             });
 
+            final String newsUrl = dataCursor.getString(dataCursor.getColumnIndex(FavouritesTable.FIELD_URL));
+
             ArrayList<String> check = queryFavourites();
-            if (check.contains(newsurl.get(position))) {
+            if (check.contains(newsUrl)) {
                 btnbookmark.setFavorite(true);
             } else {
                 btnbookmark.setFavorite(false);
@@ -124,7 +141,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
             btnbookmark.setOnFavoriteChangeListener(new MaterialFavoriteButton.OnFavoriteChangeListener() {
                 @Override
                 public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                    mContext.getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsurl.get(position)});
+                    mContext.getContentResolver().delete(FavouritesTable.CONTENT_URI, FavContract.COLUMN_URL + " = ?", new String[]{"" + newsUrl});
                 }
             });
 
@@ -147,7 +164,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return name.size();
+        return (dataCursor == null) ? 0 : dataCursor.getCount();
     }
 }
 
