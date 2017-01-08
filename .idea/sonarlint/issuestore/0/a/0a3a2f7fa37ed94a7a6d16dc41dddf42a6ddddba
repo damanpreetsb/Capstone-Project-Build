@@ -1,0 +1,184 @@
+
+ squid:MethodCyclomaticComplexity"dThe Cyclomatic Complexity of this method "onPageScrolled" is 14 which is greater than 10 authorized.(İÖ—
+esquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ë´åİşÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(öæ¥Ù
+“ squid:MethodCyclomaticComplexity"dThe Cyclomatic Complexity of this method "dataSetChanged" is 13 which is greater than 10 authorized.(ÒÛ´úÿÿÿÿ
+Œ squid:MethodCyclomaticComplexity"bThe Cyclomatic Complexity of this method "onTouchEvent" is 26 which is greater than 10 authorized.(ºµÇ¨
+Gsquid:S1199"-Extract this nested code block into a method.(ê¶ôĞùÿÿÿÿ
+• squid:MethodCyclomaticComplexity"kThe Cyclomatic Complexity of this method "onInterceptTouchEvent" is 30 which is greater than 10 authorized.(ÑÆ
+Wsquid:S1226"CIntroduce a new variable instead of reusing the parameter "params".(Şõî
+fsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(ÁïâJ
+Dsquid:S1066"/Merge this if statement with the enclosing one.(¹¤Öş
+:squid:S1166"%Either log or rethrow this exception.(’‹ƒ
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¹–ïÖúÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ÒÛ´úÿÿÿÿ
+S"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ë´åİşÿÿÿÿ
+|squid:S1450"hRemove the "mNeedCalculatePageOffsets" field and declare it as a local variable in the relevant methods.(Ø¼ù<
+„squid:S1151"jReduce this switch case number of lines from 31 to at most 5, for example by extracting code into methods.(µ˜ÇÃøÿÿÿÿ
+[squid:S1226"AIntroduce a new variable instead of reusing the parameter "item".(ÅÏÔ”şÿÿÿÿ
+‹ squid:MethodCyclomaticComplexity"\The Cyclomatic Complexity of this method "onDraw" is 11 which is greater than 10 authorized.(ÕÆ¾ùıÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(Ö¼Ùıÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(²š¥­
+N"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(³¹ôé
+squid:S1151"jReduce this switch case number of lines from 10 to at most 5, for example by extracting code into methods.(ÒìÌ³
+‚ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(ñÅËç
+Fsquid:S1068"1Remove this unused "mIgnoreGutter" private field.(®é·­
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Êı
+Qsquid:S1244"=Equality tests should not be made with floating point values.(ÚãÛ 
+~squid:S1151"iReduce this switch case number of lines from 7 to at most 5, for example by extracting code into methods.(…Ô«Ê
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(èÚº
+]squid:S2583"CChange this condition so that it does not always evaluate to "true"(àÉ‡ıÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Õˆãü
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(®”ù¨üÿÿÿÿ
+a
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(€Í‰E
+Psquid:S1854"6Remove this useless assignment to local variable "ii".(åÑóşÿÿÿÿ
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 44 to the 15 allowed.(ºµÇ¨
+Ssquid:S1155">Use isEmpty() to check whether the collection is empty or not.(¤½ŒÇ
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(†ö˜¶ÿÿÿÿÿ
+isquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(È…É
+
+Dsquid:S1066"/Merge this if statement with the enclosing one.(¥ĞÀ´
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(öæ¥Ù
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(£ğÅ–ıÿÿÿÿ
+ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+„squid:S1151"jReduce this switch case number of lines from 11 to at most 5, for example by extracting code into methods.(µ˜ÇÃøÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Ğ”¤Ö
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÕÆ¾ùıÿÿÿÿ
+Rsquid:S2259"=NullPointerException might be thrown as 'ii' is nullable here(µŒµ÷
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Œî¡‘
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ÊËÈŞùÿÿÿÿ
+Ssquid:S1155">Use isEmpty() to check whether the collection is empty or not.(˜¡–²
+osquid:S1067"ZReduce the number of conditional operators (4) used in the expression (maximum allowed 3).(Ş–‘Ü
+ squid:MethodCyclomaticComplexity"^The Cyclomatic Complexity of this method "populate" is 58 which is greater than 10 authorized.(£æ·˜øÿÿÿÿ
+]squid:S1226"CIntroduce a new variable instead of reusing the parameter "loader".(Æ³óƒıÿÿÿÿ
+Xsquid:S2583"CChange this condition so that it does not always evaluate to "true"(Š¾ñ
+„squid:S1151"jReduce this switch case number of lines from 58 to at most 5, for example by extracting code into methods.(ê¶ôĞùÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(‹¿ï”
+Rsquid:S1854"=Remove this useless assignment to local variable "childLeft".(ÒÈŸœ
+Šsquid:S1319"pThe type of the "views" object should be an interface such as "List" rather than the implementation "ArrayList".(é”˜Šûÿÿÿÿ
+Bsquid:S1199"-Extract this nested code block into a method.(éÊè–
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 50 to the 15 allowed.(ÑÆ
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ÌÔÁÖşÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(œ…é
+S"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(ë´åİşÿÿÿÿ
+Psquid:S1213";Move this constructor to comply with Java Code Conventions.(õÏºè
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Â¼Æå
+„squid:S1151"jReduce this switch case number of lines from 27 to at most 5, for example by extracting code into methods.(£ê„€ıÿÿÿÿ
+ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¥îÙ÷ûÿÿÿÿ
+Ssquid:S1226">Introduce a new variable instead of reusing the parameter "f".(Ÿú¶³
+3squid:S2178"Correct this "|" to "||".(†¿ŞÂùÿÿÿÿ
+Psquid:S1854"<Remove this useless assignment to local variable "childTop".(áÁ¯s
+\squid:S1226"BIntroduce a new variable instead of reusing the parameter "child".(¯ùàüÿÿÿÿ
+„squid:S1151"jReduce this switch case number of lines from 37 to at most 5, for example by extracting code into methods.(¨é×öıÿÿÿÿ
+Osquid:S1161":Add the "@Override" annotation above this method signature(“–ış
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ßèÏ†ıÿÿÿÿ
+› squid:MethodCyclomaticComplexity"lThe Cyclomatic Complexity of this method "setCurrentItemInternal" is 16 which is greater than 10 authorized.(¦ ’òÿÿÿÿÿ
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(İÖ—
+ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Æ¬
+\"squid:SwitchLastCaseIsDefaultCheck"+Move this default to the end of the switch.(İ–Ò˜ÿÿÿÿÿ
+“ squid:MethodCyclomaticComplexity"jThe Cyclomatic Complexity of this method "calculatePageOffsets" is 23 which is greater than 10 authorized.(ÁïâJ
+Ssquid:S1226">Introduce a new variable instead of reusing the parameter "f".(£´Ÿä
+Rsquid:S1244"=Equality tests should not be made with floating point values.(–ÿğ
+‹ squid:MethodCyclomaticComplexity"aThe Cyclomatic Complexity of this method "arrowScroll" is 20 which is greater than 10 authorized.(µÀ»ñ
+Bsquid:S1199"-Extract this nested code block into a method.(ÉÅ°²
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(µóğæ
+_squid:S1226"EIntroduce a new variable instead of reusing the parameter "velocity".(“›Äøÿÿÿÿ
+Msquid:UselessParenthesesCheck"!Remove those useless parentheses.(½ÊµØıÿÿÿÿ
+lsquid:CallToDeprecatedMethod"FRemove this use of "OVER_SCROLL_IF_CONTENT_SCROLLS"; it is deprecated.(öˆéÂ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¥ôœó
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(µóğæ
+\squid:S1226"BIntroduce a new variable instead of reusing the parameter "limit".( ø¹ùÿÿÿÿ
+‡ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(â‹¬ãúÿÿÿÿ
+osquid:S00104"_This file has 2,863 lines, which is greater than 1,000 authorized. Split it into smaller files.
+Gsquid:S1199"-Extract this nested code block into a method.(µ˜ÇÃøÿÿÿÿ
+Psquid:S1854"<Remove this useless assignment to local variable "childTop".(áÁ¯s
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(›§‘ùÿÿÿÿ
+S"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(“¶“âûÿÿÿÿ
+~squid:S1151"iReduce this switch case number of lines from 6 to at most 5, for example by extracting code into methods.(ÉÅ°²
+ssquid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(ˆëë¿
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(µÀ»ñ
+tsquid:S2259"ZNullPointerException might be thrown as 'mSetChildrenDrawingOrderEnabled' is nullable here(¿ÛÌĞûÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(èÚº
+Gsquid:S1199"-Extract this nested code block into a method.(µ˜ÇÃøÿÿÿÿ
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ÑÓš®ÿÿÿÿÿ
+Œ squid:MethodCyclomaticComplexity"bThe Cyclomatic Complexity of this method "scrollToItem" is 11 which is greater than 10 authorized.(÷‰”›
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ÃšÓòıÿÿÿÿ
+Csquid:S1066"/Merge this if statement with the enclosing one.(€Í‰E
+"squid:ClassVariableVisibilityCheck"SMake gravity a static final constant or non-public and provide accessors if needed.(°¯íª
+esquid:CallToDeprecatedMethod":Remove this use of "OVER_SCROLL_ALWAYS"; it is deprecated.(”»ãøÿÿÿÿ
+Gsquid:S1199"-Extract this nested code block into a method.(õÑÆÁşÿÿÿÿ
+Msquid:S1213"8Move this variable to comply with Java Code Conventions.(ÆëÛÛ
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÆÜıÿÿÿÿ
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ó¯îÉùÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Œî¡‘
+~squid:S1151"iReduce this switch case number of lines from 6 to at most 5, for example by extracting code into methods.(éÊè–
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(Ã Š³ûÿÿÿÿ
+ squid:MethodCyclomaticComplexity"^The Cyclomatic Complexity of this method "onLayout" is 19 which is greater than 10 authorized.(½íµ”úÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(½íµ”úÿÿÿÿ
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(î£ìßüÿÿÿÿ
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Û†êùıÿÿÿÿ
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÆÜıÿÿÿÿ
+Ysquid:CallToDeprecatedMethod".Remove this use of "onPull"; it is deprecated.(ğÄŒ¦ûÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¦ ’òÿÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Œî¡‘
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(á±¬ùÿÿÿÿ
+…squid:S1319"pThe type of the "views" object should be an interface such as "List" rather than the implementation "ArrayList".(À—Úô
+Xsquid:S1226">Introduce a new variable instead of reusing the parameter "t".(¿›¥ïÿÿÿÿÿ
+Lsquid:S1481"2Remove this unused "paddingBottom" local variable.(ĞÄÕÒùÿÿÿÿ
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ú¿³©
+msquid:S3776"SRefactor this method to reduce its Cognitive Complexity from 142 to the 15 allowed.(£æ·˜øÿÿÿÿ
+Rsquid:S2259"=NullPointerException might be thrown as 'lp' is nullable here( Õò£
+Vsquid:S1226"AIntroduce a new variable instead of reusing the parameter "item".(„¼¿
+Ysquid:S1226"DIntroduce a new variable instead of reusing the parameter "outRect".(±àä
+’ squid:MethodCyclomaticComplexity"cThe Cyclomatic Complexity of this method "addFocusables" is 13 which is greater than 10 authorized.(é”˜Šûÿÿÿÿ
+Rsquid:S2259"=NullPointerException might be thrown as 'ii' is nullable here(µŒµ÷
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Æ¬
+g
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ˆƒ¢µûÿÿÿÿ
+Ysquid:CallToDeprecatedMethod".Remove this use of "onPull"; it is deprecated.(±ú´†øÿÿÿÿ
+Qsquid:S1068"=Remove this unused "mNeedCalculatePageOffsets" private field.(Ø¼ù<
+Psquid:S1854"<Remove this useless assignment to local variable "duration".(ùÁ¡P
+isquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(İş¥T
+€squid:S1450"fRemove the "mChildHeightMeasureSpec" field and declare it as a local variable in the relevant methods.( ıƒáûÿÿÿÿ
+3squid:S2178"Correct this "|" to "||".(†¿ŞÂùÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"SMake isDecor a static final constant or non-public and provide accessors if needed.(ª¡€•
+Vsquid:S1854"<Remove this useless assignment to local variable "curIndex".(à ³‰ùÿÿÿÿ
+ƒsquid:S1151"iReduce this switch case number of lines from 7 to at most 5, for example by extracting code into methods.(õÑÆÁşÿÿÿÿ
+Hsquid:UselessParenthesesCheck"!Remove those useless parentheses.(ÿ‘Ò
+\"squid:SwitchLastCaseIsDefaultCheck"+Move this default to the end of the switch.(İ–Ò˜ÿÿÿÿÿ
+Psquid:S1854"6Remove this useless assignment to local variable "ii".(åÑóşÿÿÿÿ
+Lsquid:S1135"2Complete the task associated to this TODO comment.(Âß‘ûÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(é”˜Šûÿÿÿÿ
+Rsquid:S2259"=NullPointerException might be thrown as 'ii' is nullable here(µŒµ÷
+isquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(ÇÁ²&
+r
+squid:S135"YReduce the total number of break and continue statements in this loop to use at most one.(‡×Æ’øÿÿÿÿ
+\"squid:SwitchLastCaseIsDefaultCheck"+Move this default to the end of the switch.(İ–Ò˜ÿÿÿÿÿ
+squid:S1450"eRemove the "mChildWidthMeasureSpec" field and declare it as a local variable in the relevant methods.(åéòÕşÿÿÿÿ
+b
+squid:S134"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(êœã«
+osquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(œøÂÂÿÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(Ôş±Š
+ squid:MethodCyclomaticComplexity"_The Cyclomatic Complexity of this method "onMeasure" is 20 which is greater than 10 authorized.(Ö¼Ùıÿÿÿÿ

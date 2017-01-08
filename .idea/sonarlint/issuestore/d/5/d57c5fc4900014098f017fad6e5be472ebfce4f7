@@ -1,0 +1,12 @@
+
+Lsquid:S1068"0Remove this unused "mAppWidgetId" private field.(·ÿ’´8íÛû“+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¦ÀŠû“+
+Tsquid:S1068"3Remove this unused "appWidgetTarget" private field.(›¶Œùÿÿÿÿ8íÛû“+
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘á«ï8·ÎÀù“+
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰œ«ö8€ë’€”+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ùğ‚ù“+
+bsquid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8Ùğ‚ù“+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ùğ‚ù“+
+bsquid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8Ùğ‚ù“+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Úûõ–ÿÿÿÿÿ8Ùğ‚ù“+
+Asquid:S1166"%Either log or rethrow this exception.(ï­£Ä8ôŞ‡û“+

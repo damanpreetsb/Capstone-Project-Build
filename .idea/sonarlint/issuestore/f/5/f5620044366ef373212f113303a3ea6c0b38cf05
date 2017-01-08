@@ -1,0 +1,6 @@
+
+rsquid:S1450"XRemove the "actionBar" field and declare it as a local variable in the relevant methods.(ÒïÍ°ÿÿÿÿÿ
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ü¨€”+
+psquid:S1450"VRemove the "newsurl" field and declare it as a local variable in the relevant methods.(¹÷±Åıÿÿÿÿ
+hsquid:MaximumInheritanceDepth"<This class has 8 parents which is greater than 5 authorized.(ëÖô¥ûÿÿÿÿ
+Asquid:S1166"%Either log or rethrow this exception.(”ı¾8¤­§€”+

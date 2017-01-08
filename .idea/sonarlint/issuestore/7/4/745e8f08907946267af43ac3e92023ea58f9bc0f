@@ -1,0 +1,16 @@
+
+Jsquid:S1659")Declare "description" on a separate line.(¨Éøîøÿÿÿÿ8ÛñËá“+
+Jsquid:S1068")Remove this unused "image" private field.(¨Éøîøÿÿÿÿ8‰èÎõ•+
+—squid:S1319"vThe type of the "description" object should be an interface such as "List" rather than the implementation "ArrayList".(ËşØâÿÿÿÿÿ8ÛñËá“+
+‰squid:S1319"mThe type of the "id" object should be an interface such as "List" rather than the implementation "ArrayList".(â¢·Í8ÛñËá“+
+Gsquid:S1068"&Remove this unused "id" private field.(¨Éøîøÿÿÿÿ8óİËÓ”+
+Asquid:S1166"%Either log or rethrow this exception.(”ı¾8ÛñËá“+
+‘squid:S1319"pThe type of the "image" object should be an interface such as "List" rather than the implementation "ArrayList".(²å”Ğÿÿÿÿÿ8ÛñËá“+
+Csquid:S1659""Declare "name" on a separate line.(¨Éøîøÿÿÿÿ8ÛñËá“+
+Fsquid:S1659"%Declare "newsurl" on a separate line.(¨Éøîøÿÿÿÿ8ÛñËá“+
+Psquid:S1068"/Remove this unused "description" private field.(¨Éøîøÿÿÿÿ8óİËÓ”+
+‹squid:S1319"oThe type of the "name" object should be an interface such as "List" rather than the implementation "ArrayList".(â¢·Í8ÛñËá“+
+“squid:S1319"rThe type of the "newsurl" object should be an interface such as "List" rather than the implementation "ArrayList".(ËşØâÿÿÿÿÿ8ÛñËá“+
+hsquid:UselessImportCheck":Remove this unused import 'android.database.SQLException'.(ø‹çëşÿÿÿÿ8óİËÓ”+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÛñËá“+
+Dsquid:S1659"#Declare "image" on a separate line.(¨Éøîøÿÿÿÿ8ÛñËá“+

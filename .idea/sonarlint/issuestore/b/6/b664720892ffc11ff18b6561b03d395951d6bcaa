@@ -1,0 +1,9 @@
+
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨²Ç´8ß°©á“+
+}squid:S1450"\Remove the "mRecyclerView" field and declare it as a local variable in the relevant methods.(Òéıÿÿÿÿ8ß°©á“+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(í­…üÿÿÿÿ8ß°©á“+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÀÇ»şÿÿÿÿ8ß°©á“+
+[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8À¢“õ•+
+Zsquid:UselessImportCheck",Remove this unused import 'android.net.Uri'.(òêû‘ıÿÿÿÿ8À¢“õ•+
+zsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç·¦ºùÿÿÿÿ8ß°©á“+
+vsquid:UselessImportCheck"HRemove this unused import 'com.example.daman.capstone.data.FavContract'.(¤ŒÀ¤úÿÿÿÿ8ÆÖìô•+

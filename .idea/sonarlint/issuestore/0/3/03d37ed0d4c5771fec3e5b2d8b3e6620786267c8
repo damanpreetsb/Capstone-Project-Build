@@ -1,0 +1,12 @@
+
+squid:S1319"rThe type of the "newsurl" object should be an interface such as "List" rather than the implementation "ArrayList".(®ã¿ø8‹»ºÑ“+
+Asquid:S1166"%Either log or rethrow this exception.(”ı¾8‹»ºÑ“+
+[squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³ğ‹G8ø¤Œ”+
+hsquid:MaximumInheritanceDepth"<This class has 8 parents which is greater than 5 authorized.(ÇÄ‘êıÿÿÿÿ
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‹»ºÑ“+
+‘squid:S1319"pThe type of the "image" object should be an interface such as "List" rather than the implementation "ArrayList".(È”Îüûÿÿÿÿ8‹»ºÑ“+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‹»ºÑ“+
+’squid:S1319"vThe type of the "description" object should be an interface such as "List" rather than the implementation "ArrayList".(®ã¿ø8‹»ºÑ“+
+squid:S1319"oThe type of the "name" object should be an interface such as "List" rather than the implementation "ArrayList".(È”Îüûÿÿÿÿ8‹»ºÑ“+
+squid:S1319"qThe type of the "author" object should be an interface such as "List" rather than the implementation "ArrayList".(®ã¿ø8‹»ºÑ“+
+Fsquid:S1166"%Either log or rethrow this exception.(÷¿­¹ÿÿÿÿÿ8‹»ºÑ“+

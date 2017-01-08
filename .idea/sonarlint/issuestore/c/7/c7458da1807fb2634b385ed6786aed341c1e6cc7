@@ -1,0 +1,17 @@
+
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç·¦ºùÿÿÿÿ
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨²Ç´
+bsquid:UselessImportCheck"@Remove this unused import 'com.android.volley.AuthFailureError'.(¤ˆñ¢
+ksquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûñ[
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+vsquid:S1188"\Reduce this anonymous class number of lines from 23 to at most 20, or make it a named class.(±æÿÚıÿÿÿÿ
+qsquid:UselessImportCheck"HRemove this unused import 'android.support.v7.widget.GridLayoutManager'.(ŸéÖÚ8©Æˆ‡”+
+Usquid:UselessImportCheck".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+Osquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(í­…üÿÿÿÿ
+Qsquid:UselessImportCheck"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+?squid:S1166"%Either log or rethrow this exception.(÷¿­¹ÿÿÿÿÿ
+nsquid:S1450"RRemove the "llm" field and declare it as a local variable in the relevant methods.(†¾õ‹8´‹‡”+
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÀÇ»şÿÿÿÿ
+Œ"squid:ClassVariableVisibilityCheck"TMake mTwoPane a static final constant or non-public and provide accessors if needed.(ûöï†úÿÿÿÿ8ùŒ”+

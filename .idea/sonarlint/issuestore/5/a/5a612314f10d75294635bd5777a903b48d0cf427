@@ -1,0 +1,21 @@
+
+Isquid:S1068"/Remove this unused "description" private field.(¨Éøîøÿÿÿÿ
+Isquid:S1068"/Remove this unused "mMutedColor" private field.(Öä–Ñıÿÿÿÿ
+gsquid:UselessImportCheck"ERemove this unused import 'android.graphics.drawable.BitmapDrawable'.(³Ï÷
+Œsquid:S1319"rThe type of the "newsurl" object should be an interface such as "List" rather than the implementation "ArrayList".(ËşØâÿÿÿÿÿ
+=squid:S1659"#Declare "image" on a separate line.(¨Éøîøÿÿÿÿ
+Gsquid:S1068"&Remove this unused "fm" private field.(°˜Éİûÿÿÿÿ8È£Ê”+
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+\squid:UselessImportCheck":Remove this unused import 'com.squareup.picasso.Callback'.(“¢àò
+squid:S1319"vThe type of the "description" object should be an interface such as "List" rather than the implementation "ArrayList".(ËşØâÿÿÿÿÿ
+Csquid:S1659")Declare "description" on a separate line.(¨Éøîøÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+[squid:UselessImportCheck"9Remove this unused import 'com.squareup.picasso.Picasso'.(£œ¿×
+Msquid:S1068",Remove this unused "mTwoPane" private field.(¬óª¡ùÿÿÿÿ8È£Ê”+
+?squid:S1659"%Declare "newsurl" on a separate line.(¨Éøîøÿÿÿÿ
+…squid:S1319"pThe type of the "image" object should be an interface such as "List" rather than the implementation "ArrayList".(è¹Åô
+^squid:S00107"AConstructor has 8 parameters, which is greater than 7 authorized.(Ù›µ¿8«¤åŠ”+
+<squid:S1659""Declare "name" on a separate line.(¨Éøîøÿÿÿÿ
+Esquid:S1068"+Remove this unused "newsurl" private field.(¨Éøîøÿÿÿÿ
+‚squid:S1319"mThe type of the "id" object should be an interface such as "List" rather than the implementation "ArrayList".(Ù›µ¿
+„squid:S1319"oThe type of the "name" object should be an interface such as "List" rather than the implementation "ArrayList".(Ù›µ¿

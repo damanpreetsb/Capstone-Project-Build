@@ -1,0 +1,11 @@
+
+Asquid:S1659"&Declare "cardView" on a separate line.(©…Î?8èâ¨Ğ“+
+[
+squid:S106";Replace this usage of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8€æº•+
+Csquid:S1659")Declare "authorTitle" on a separate line.(Ã–Ëñøÿÿÿÿ
+Gsquid:S1659"&Declare "btnshare" on a separate line.(·•˜¸ûÿÿÿÿ8°ƒªĞ“+
+Hsquid:S1659"'Declare "btnbrowse" on a separate line.(·•˜¸ûÿÿÿÿ8°ƒªĞ“+
+}squid:S1188"\Reduce this anonymous class number of lines from 24 to at most 20, or make it a named class.(’£á‘ûÿÿÿÿ8ËµĞ“+
+Isquid:S1659"(Declare "authorText" on a separate line.(Ã–Ëñøÿÿÿÿ8¬Ì¦·“+
+Lsquid:S1659"0Declare "slideDownAnimation" on a separate line.(˜›¾Ó8ËöˆÑ“+
+Asquid:S1166"%Either log or rethrow this exception.(É®£8ËµĞ“+
